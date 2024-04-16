@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import * as PreferenceController from "../controllers/PreferenceController";
+import * as ProductPreferenceController from "../controllers/ProductPreferenceController";
 
 const preferenceRoutes = Router();
 
-preferenceRoutes.post("/preferences", PreferenceController.store);
+preferenceRoutes.post("/preferences/product", ProductPreferenceController.store);
  
  
 export default preferenceRoutes;
