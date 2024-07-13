@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import CreateProductPreferenceService from "../services/preference/CreateProductPreferenceService";
 import { ProductRequest } from "../dto/ProductRequest";
 

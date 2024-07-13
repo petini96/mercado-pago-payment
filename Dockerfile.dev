@@ -1,20 +1,13 @@
-# Use uma imagem base do Node.js
 FROM node:18.19-alpine
 
-# Defina o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copie os arquivos necessários (package.json e package-lock.json)
 COPY package*.json ./
 
-# Instale as dependências de desenvolvimento e de produção
 RUN npm install --only=development
 
-# Copie todo o restante dos arquivos do diretório atual para o contêiner
 COPY . .
 
-# Exponha a porta que o servidor usa (opcional, dependendo do seu aplicativo)
 EXPOSE 3000
 
-# Comando para iniciar o servidor de desenvolvimento
 CMD ["npm", "run", "dev:server"]

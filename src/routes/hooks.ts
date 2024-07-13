@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import * as HooksController from "../controllers/HooksController";
 
 const hooksRoutes = Router();
