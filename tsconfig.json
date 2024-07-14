@@ -1,8 +1,17 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
+    "target": "es6",
+    "strict": false,
     "preserveConstEnums": true,
-    "rootDir": "./src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    // "rootDir": "./src",
     "outDir": "./dist"
   },
   "include": [
@@ -11,6 +20,7 @@
   "exclude": [
     "node_modules",
     "**/*.spec.ts",
-    "__test__"
+    "__test__",
+    "public"
   ]
 }
