@@ -1,9 +1,7 @@
-import { Sequelize } from "sequelize-typescript"; 
-import Costumer from "../models/Costumer";
-import PreapprovalPlan from "../models/PreapprovalPlan";
-// eslint-disable-next-line
-const dbConfig = require("../config/database");
-// import dbConfig from "../config/database";
+import { Sequelize } from 'sequelize-typescript';
+import Costumer from '../models/Costumer';
+import PreapprovalPlan from '../models/PreapprovalPlan';
+const dbConfig = require('../config/database');
 
 const sequelize = new Sequelize(dbConfig);
 
