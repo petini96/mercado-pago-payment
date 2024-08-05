@@ -3,12 +3,11 @@ import { mpClient } from '../../config/mercadoPago';
 import { PreapprovalPlanInput } from '../../dto/preapproval-plan/PreapprovalPlanInput';
 import { PreApprovalPlanGetData } from 'mercadopago/dist/clients/preApprovalPlan/get/types';
 import { Options } from 'mercadopago/dist/types';
-import PreapprovalPlan from '../../models/PreapprovalPlan';
 
 const preApprovalPlan = new PreApprovalPlan(mpClient);
 
 export const CreatePreapprovalPlanService = async (preapprovalPlanInput: PreapprovalPlanInput): Promise<any> => {
-   const resultPreApprovalPlan = await preApprovalPlan.create({
+   return await preApprovalPlan.create({
       body: {
          back_url: preapprovalPlanInput.back_url,
          reason: preapprovalPlanInput.reason,
@@ -20,13 +19,6 @@ export const CreatePreapprovalPlanService = async (preapprovalPlanInput: Preappr
          }
       }
    });
-   // const newPreapprovalPlan = PreapprovalPlan.build({
-   //    name: preapprovalPlanInput.reason,
-   //    description: "good plan",
-   //    price: preapprovalPlanInput.auto_recurring.transaction_amount,
-   // });
-   // await newPreapprovalPlan.save()
-   return resultPreApprovalPlan;
 };
 
 export const ShowPreapprovalPlanService = async (preApprovalPlanId: string): Promise<any> => {
@@ -37,10 +29,5 @@ export const ShowPreapprovalPlanService = async (preApprovalPlanId: string): Pro
       integratorId: "<integrator-id>",
       corporationId: "<corporation-id>",
    }
-   const response = preApprovalPlan.get({ preApprovalPlanId: preApprovalPlanId} as PreApprovalPlanGetData);
-   return response;
+   return preApprovalPlan.get({ preApprovalPlanId: preApprovalPlanId} as PreApprovalPlanGetData);
 };
-
-// export const SearchPreapprovalPlanService = async (preApprovalPlanId: string, options: Options): Promise<any> => {
-//    preApprovalPlan.get({ preApprovalPlanId: preApprovalPlanId, requestOptions: options } as PreApprovalPlanGetData);
-// };

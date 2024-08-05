@@ -1,12 +1,11 @@
 import {  Preference } from 'mercadopago';
-import { Product } from '../../models/Product';
 import { mpClient } from '../../config/mercadoPago';
-import { randomUUID } from 'crypto';
 import { findProductByID } from '../../repositories/ProductRepository';
 import { ProductRequest } from '../../dto/ProductRequest';
 
 const CreateProductPreferenceService = async (productRequest: ProductRequest): Promise<any> => {
    const product = await findProductByID(productRequest.id);
+
    if (product === null) {
       throw new Error("fail to find product in database");
    }
@@ -16,6 +15,7 @@ const CreateProductPreferenceService = async (productRequest: ProductRequest): P
    }
 
    const preference = new Preference(mpClient);
+   
    const response = await preference.create({
       body: {
          items: [
