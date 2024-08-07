@@ -1,9 +1,9 @@
 import { Router } from "express";
 import * as PreapprovalPlanController from "../controllers/PreapprovalPlanController";
 
-const planRoutes = Router();
+const preapprovalPlanRoutes = Router();
 
-planRoutes.post("/preapproval-plans", PreapprovalPlanController.store);
-planRoutes.get("/preapproval-plans/:preapprovalPlanID", PreapprovalPlanController.show);
+preapprovalPlanRoutes.post("/preapproval-plans", PreapprovalPlanController.store);
+preapprovalPlanRoutes.get("/preapproval-plans/:preapprovalPlanID", PreapprovalPlanController.show);
  
-export default planRoutes;
+export default preapprovalPlanRoutes;

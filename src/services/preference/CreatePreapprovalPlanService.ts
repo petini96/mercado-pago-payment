@@ -16,6 +16,10 @@ export const CreatePreapprovalPlanService = async (preapprovalPlanInput: Preappr
             transaction_amount: preapprovalPlanInput.auto_recurring.transaction_amount,
             frequency: preapprovalPlanInput.auto_recurring.frequency,
             frequency_type: preapprovalPlanInput.auto_recurring.frequency_type,
+            free_trial: {
+               frequency: 1,
+               frequency_type: 'months'
+            }
          }
       }
    });
