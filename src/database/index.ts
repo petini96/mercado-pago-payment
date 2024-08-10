@@ -1,15 +1,17 @@
 import { Sequelize } from 'sequelize-typescript';
-import Costumer from '../models/Costumer';
+import Customer from '../models/Customer';
 import PreapprovalPlan from '../models/PreapprovalPlan';
 import Plan from '../models/Plan';
+import Subscription from '../models/Subscription';
 const dbConfig = require('../config/database');
 
 const sequelize = new Sequelize(dbConfig);
 
 const models = [
-   Costumer,
+   Customer,
    PreapprovalPlan,
-   Plan
+   Plan,
+   Subscription
 ];
 
 sequelize.addModels(models);

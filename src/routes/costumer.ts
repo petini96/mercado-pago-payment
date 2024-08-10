@@ -1,8 +1,8 @@
 import { Router } from "express";
-import * as CostumerController from "../controllers/CostumerController";
+import * as CustomerController from "../controllers/CustomerController";
 
-const costumerRoutes = Router();
+const customerRoutes = Router();
 
-costumerRoutes.post("/costumers", CostumerController.store);
+customerRoutes.post("/customers", CustomerController.store);
  
-export default costumerRoutes;
+export default customerRoutes;

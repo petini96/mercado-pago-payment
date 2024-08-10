@@ -1,7 +1,8 @@
 export interface PlanOutput {
-  id: string;
+  id: number | string;
   name: string
   description: string
   frequency: string
   price: number
+  mercadoPagoPlanId: string
 }

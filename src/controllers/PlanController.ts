@@ -4,13 +4,13 @@ import { CreatePlanService, ListPlanService, ShowPlanService } from "../services
 import { Pagination } from "../dto/pagination/Pagination";
 
 export const store = async (req: Request, res: Response): Promise<Response> => {
-  const PlanInput: PlanInput = req.body;
+  const planInput: PlanInput = req.body;
 
   try {
-    const data = await CreatePlanService(PlanInput);
-    return res.status(200).json({ message: 'success to create plan', data: data });
+    const data = await CreatePlanService(planInput);
+    return res.status(201).json({ message: 'success to create plan', data: data });
   } catch (error) {
-    return res.status(400).json({ message: 'failt to create plan', error: error });
+    return res.status(400).json({ message: 'fail to create plan', error: error });
   }
   
 };
@@ -22,7 +22,7 @@ export const list = async (req: Request, res: Response): Promise<Response> => {
     const data = await ListPlanService(limit, offset);
     return res.status(200).json({ message: 'success to get plan', data: data });
   } catch (error) {
-    return res.status(400).json({ message: 'failt to get plan', error: error });
+    return res.status(400).json({ message: 'fail to get plan', error: error });
   }
 
 }; 

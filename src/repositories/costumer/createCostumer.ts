@@ -1,11 +1,11 @@
-import { CostumerInput } from "../../dto/costumer/CostumerInput";
-import Customer from "../../models/Costumer";
+import { CustomerInput } from "../../dto/customer/CustomerInput";
+import Customer from "../../models/Customer";
 
-export async function createCustomerRepository(costumerInput: CostumerInput) {
+export async function createCustomerRepository(customerInput: CustomerInput) {
   try {
     const newCustomer = await Customer.create({
-      name: costumerInput.name,
-      email: costumerInput.email,
+      name: customerInput.name,
+      email: customerInput.email,
     });
     return newCustomer;
   } catch (error) {

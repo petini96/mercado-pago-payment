@@ -6,14 +6,11 @@ import {
     CreatedAt,
     UpdatedAt,
     PrimaryKey,
-    AutoIncrement,
-    ForeignKey,
-    HasOne
+    AutoIncrement
 } from "sequelize-typescript";
 
-import PreapprovalPlan from "./PreapprovalPlan";
-
 @Table({
+    tableName: 'Customers',
     timestamps: true,
 })
 class Customer extends Model<Customer> {
@@ -31,12 +28,11 @@ class Customer extends Model<Customer> {
     })
     email!: string;
 
-    @ForeignKey(() => PreapprovalPlan)
-    @Column(DataType.INTEGER)
-    preapprovalPlanId!: number;
-
-    @HasOne(() => PreapprovalPlan)
-    preapprovalPlan!: PreapprovalPlan;
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: true
+    })
+    mercadoPagoCustomerId?: number;
 
     @CreatedAt
     @Column(DataType.DATE)

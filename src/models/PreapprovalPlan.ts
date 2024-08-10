@@ -10,7 +10,7 @@ import {
   BelongsTo,
   ForeignKey
 } from "sequelize-typescript";
-import Customer from "./Costumer";
+import Customer from "./Customer";
 
 @Table({
   timestamps: true,

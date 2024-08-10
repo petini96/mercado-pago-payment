@@ -18,15 +18,9 @@ module.exports = {
         allowNull: false,
         unique: true
       },
-      preapprovalPlanId: {
-        type: Sequelize.INTEGER,
+      mercadoPagoCustomerId: {
         allowNull: true,
-        references: {
-          model: 'PreapprovalPlans',
-          key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

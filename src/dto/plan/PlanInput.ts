@@ -3,4 +3,5 @@ export interface PlanInput {
   description: string
   frequency: string
   price: number
+  mercadoPagoPlanId: string
 }
