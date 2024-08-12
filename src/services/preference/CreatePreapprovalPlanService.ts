@@ -3,6 +3,7 @@ import { mpClient } from '../../config/mercadoPago';
 import { PreapprovalPlanInput } from '../../dto/preapproval-plan/PreapprovalPlanInput';
 import { PreApprovalPlanGetData } from 'mercadopago/dist/clients/preApprovalPlan/get/types';
 import { Options } from 'mercadopago/dist/types';
+import { PreApprovalPlanResponse } from 'mercadopago/dist/clients/preApprovalPlan/commonTypes';
 
 const preApprovalPlan = new PreApprovalPlan(mpClient);
 
@@ -25,7 +26,7 @@ export const CreatePreapprovalPlanService = async (preapprovalPlanInput: Preappr
    });
 };
 
-export const ShowPreapprovalPlanService = async (preApprovalPlanId: string): Promise<any> => {
+export const ShowPreapprovalPlanService = async (preApprovalPlanId: string): Promise<PreApprovalPlanResponse> => {
    const options: Options = {
       timeout: 3000,
       idempotencyKey: "<idempotency-key>",

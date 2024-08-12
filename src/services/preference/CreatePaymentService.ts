@@ -2,22 +2,44 @@ import { ShowPreapprovalPlanService } from './CreatePreapprovalPlanService';
 import { CreatePreapprovalService } from './CreatePreapprovalService';
 import { PreapprovalInput } from '../../dto/preapproval/PreapprovalInput';
 
+function calculateEndDate(now: Date, frequencyType: string, frequency: number, repetitions: number) {
+  let endDate = new Date(now);
+
+  switch (frequencyType) {
+    case 'days':
+      endDate.setDate(now.getDate() + frequency * repetitions);
+      break;
+    case 'months':
+      endDate.setMonth(now.getMonth() + frequency * repetitions);
+      break;
+    default:
+      throw new Error(`Unsupported frequency type: ${frequencyType}`);
+  }
+
+  return endDate;
+}
+
 export const CreatePaymentService = async (body: any): Promise<any> => {
   console.log("payment request:");
   console.log(body);
 
   try {
-    // const preApprovalPlanID = "2c938084910f959d01913b516ea50dfe";
-    const preApprovalPlan = await ShowPreapprovalPlanService(body.mercadoPagoPlanId);
+    const preApprovalPlan = await ShowPreapprovalPlanService(body.plan.mercadoPagoPlanId);
     console.log("preApprovalPlan:");
     console.log(preApprovalPlan);
 
+    const frequency = preApprovalPlan.auto_recurring.frequency;
+    const frequencyType = preApprovalPlan.auto_recurring.frequency_type;
+
+    const now = new Date();
+    const endDate = calculateEndDate(now, frequencyType, frequency, 1)
+
     const preapprovalInput = {
       auto_recurring: {
-        frequency: 1,
-        frequency_type: "months",
-        start_date: "2020-06-02T13:07:14.260Z",
-        end_date: "2029-07-20T15:59:52.581Z",
+        frequency: preApprovalPlan.auto_recurring.frequency,
+        frequency_type: preApprovalPlan.auto_recurring.frequency_type,
+        start_date: now.toISOString(),
+        end_date: endDate.toISOString(),
         transaction_amount: body.transaction_amount,
         currency_id: "BRL",
       },
@@ -36,8 +58,7 @@ export const CreatePaymentService = async (body: any): Promise<any> => {
     const preapproval = await CreatePreapprovalService(preapprovalInput);
     console.log("preapproval:");
     console.log(preapproval);
-
-    // Retornar uma mensagem de sucesso
+ 
     return {
       status: "success",
       message: "Preapproval created successfully",
@@ -46,7 +67,6 @@ export const CreatePaymentService = async (body: any): Promise<any> => {
   } catch (error) {
     console.error("Failed to create preapproval:", error);
 
-    // Retornar um erro em caso de falha
     return {
       status: "error",
       message: "Failed to create preapproval",

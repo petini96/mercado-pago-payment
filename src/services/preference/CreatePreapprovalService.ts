@@ -1,10 +1,11 @@
 import { PreApproval } from 'mercadopago';
 import { mpClient } from '../../config/mercadoPago';
 import { PreapprovalInput } from '../../dto/preapproval/PreapprovalInput';
+import { PreApprovalResponse } from 'mercadopago/dist/clients/preApproval/commonTypes';
 
 const preApproval = new PreApproval(mpClient);
 
-export const CreatePreapprovalService = async (preapprovalInput: PreapprovalInput): Promise<any> => {
+export const CreatePreapprovalService = async (preapprovalInput: PreapprovalInput): Promise<PreApprovalResponse> => {
    return await preApproval.create(
       {
          body: {

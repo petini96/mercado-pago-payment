@@ -11,7 +11,7 @@ export interface PreapprovalPlanInput {
     };
     transaction_amount: number;
     currency_id: string;
-  };
+  },
   back_url: string;
   payment_methods_allowed: {
     payment_types: {
