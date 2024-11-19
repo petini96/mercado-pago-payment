@@ -7,6 +7,7 @@ import preapproval from "./preapproval";
 import costumer from "./costumer"; 
 import payment from "./payment";
 import plan from "./plan";
+import melhorEnvio from "./melhorEnvio";
 
 const routes = Router();
 
@@ -20,5 +21,6 @@ routes.use(plan);
 routes.use(costumer);
 routes.use(hooks);
 routes.use(payment);
+routes.use(melhorEnvio);
 
 export default routes;

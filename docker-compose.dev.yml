@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: lis-database
+      POSTGRES_DB: importsjpe
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
